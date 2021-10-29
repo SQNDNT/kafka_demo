@@ -40,6 +40,7 @@ public class MyProducer {
             });
 //        }
 //        countDownLatch.await(5, TimeUnit.SECONDS);
+        //上面其实就是异步发送消息，这里要么close要么来个sleep
         producer.close();
     }
 }
