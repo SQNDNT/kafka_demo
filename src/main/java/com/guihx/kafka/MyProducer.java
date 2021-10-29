@@ -25,17 +25,15 @@ public class MyProducer {
 //        int msgNum = 5;
 //        final CountDownLatch countDownLatch = new CountDownLatch(msgNum);
 //        for (int i = 0; i < 100; i++) {
-            ProducerRecord<String,String> producerRecord = new ProducerRecord<String,String>(TOPIC_NAME, JSON.toJSONString("fack baby for every"));
+            ProducerRecord<String,String> producerRecord = new ProducerRecord<String,String>(TOPIC_NAME, JSON.toJSONString("fuck baby for every"));
             producer.send(producerRecord, new Callback() {
                 @Override
-                public void onCompletion(RecordMetadata recordMetadata, Exception e) {
+                public void onCompletion(RecordMetadata metadata, Exception e) {
                     if (e!=null){
                         System.out.println("发送失败");
                     }
-                    if(recordMetadata!=null){
-                        System.out.println(recordMetadata.topic());
-                        System.out.println(recordMetadata.partition());
-                        System.out.println(recordMetadata.offset());
+                    if(metadata!=null){
+                        System.out.println("发送消息结果: topic-"+ metadata.topic()+" | Partition-"+metadata.partition()+" | offset-"+ metadata.offset());
                     }
 //                    countDownLatch.countDown();
                 }
