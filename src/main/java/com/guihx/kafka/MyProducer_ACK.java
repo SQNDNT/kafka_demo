@@ -31,6 +31,13 @@ public class MyProducer_ACK {
         props.put(ProducerConfig.RETRIES_CONFIG, 3);
         //重发送间隔(300毫秒)
         props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, 300);
+        //kafka消息缓冲区32m（默认）
+        props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 32*1024*1024);
+        //一次拉取16kb消息（默认）
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, 16*1024);
+        //拉不满16的话，10毫秒后也发送
+        props.put(ProducerConfig.LINGER_MS_CONFIG, 10);
+
 
         Producer<String, String> producer = new KafkaProducer<>(props);
 
