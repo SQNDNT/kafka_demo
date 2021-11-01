@@ -1,4 +1,4 @@
-package com.guihx.kafka;
+package com.guihx.kafka.producer;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.kafka.clients.producer.*;
